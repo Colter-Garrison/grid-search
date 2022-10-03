@@ -1,9 +1,12 @@
-import styles from './Main.css';
+/* eslint-disable max-len */
+import './Main.css';
+import useCharacters from '../../hooks/useCharacters';
+import CharacterCard from './CharacterCard';
 
 export default function Main() {
-  return (
-    <div className={styles.main}>
-      <h1>This is Main</h1>
-    </div>
-  );
+  const [characters] = useCharacters();
+
+  return <div>
+    {characters.map(character => <CharacterCard key={character.id} {...character}/>)}
+  </div>;
 }
